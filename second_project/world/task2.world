@@ -1,0 +1,48 @@
+# Stage world file for Second Robotics Project - Task 2
+# Includes the Scout Mini robot and the map generated in Task 1
+
+include "scout_mini.inc"
+
+# Floorplan model definition for the environment map
+define floorplan model
+(
+  color "gray30"
+  boundary 1
+  gui_nose 0
+  gui_grid 0
+  gui_outline 0
+  gripper_return 0
+  fiducial_return 0
+  ranger_return 1    # Map reflects laser beams (needed for obstacle detection)
+)
+
+# Simulation parameters
+resolution 0.05      # 5 cm per pixel - must match map resolution
+interval_sim 100     # Simulation update interval in ms
+
+# GUI window settings
+window
+(
+  size [900 700]
+  center [0.0 0.0]
+  rotate [0.0 0.0]
+  scale 35
+)
+
+# The map generated from the ROS bag in Task 1
+# Map image: 576 x 307 pixels @ 0.05 m/px = 28.8 m x 15.35 m
+floorplan
+(
+  name "map"
+  bitmap "./map.png"   # Place map.png in the SAME folder as this .world file
+  size [28.8 15.35 1.0]
+  pose [7.56 -2.825 0.0 0.0]
+)
+
+# Robot instance
+# stageros publishes odom -> base_footprint -> base_link -> base_laser_link
+scout_mini
+(
+  name "scout"
+  pose [0.0 0.0 0.0 0.0]
+)

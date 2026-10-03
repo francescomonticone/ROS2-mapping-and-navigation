@@ -1,0 +1,21 @@
+# ROS 2 / colcon ignores
+build/
+install/
+log/
+
+# map serialize backups
+*.data.bak
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Python
+__pycache__/
+*.pyc
+
+# Editors
+.vscode/
+.idea/
+*.swp
+*~
